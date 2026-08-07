@@ -1,7 +1,6 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +8,10 @@ html = r'''<!DOCTYPE html>
   <title>Interuniversity Cardio Genetics Conference 2026</title>
 
   <style>
-    :root {
-      --navy: #082f63;
-      --red: #d01818;
-      --red-dark: #ad1111;
-      --pink: #fff3f3;
-      --pink-soft: #fff9f9;
-      --text: #23324a;
-      --muted: #667085;
-      --border: #eadede;
-      --white: #ffffff;
-      --shadow: 0 12px 34px rgba(25, 38, 61, 0.08);
-    }
+
+    /* =========================================
+       BASIC SETTINGS
+    ========================================= */
 
     * {
       box-sizing: border-box;
@@ -33,8 +24,8 @@ html = r'''<!DOCTYPE html>
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--pink-soft);
-      color: var(--text);
+      background: #fffafa;
+      color: #23324a;
       line-height: 1.65;
     }
 
@@ -42,183 +33,253 @@ html = r'''<!DOCTYPE html>
       max-width: 100%;
     }
 
-    a {
-      color: inherit;
-    }
 
-    /* NAVIGATION */
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      padding: 15px max(24px, calc((100vw - 1180px) / 2));
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #eee;
+
+      padding: 15px 6%;
+
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid #eeeeee;
+
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     }
 
     .logo {
       font-weight: 800;
-      color: var(--navy);
+      color: #0b2f63;
       letter-spacing: 0.04em;
-      white-space: nowrap;
     }
 
     .logo span {
-      color: var(--red);
+      color: #d01818;
     }
 
     nav ul {
+      list-style: none;
+
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
+
       gap: 22px;
-      list-style: none;
+
       margin: 0;
       padding: 0;
     }
 
     nav a {
       text-decoration: none;
-      font-size: 0.94rem;
-      font-weight: 700;
-      color: var(--navy);
+      color: #0b2f63;
+
+      font-size: 0.95rem;
+      font-weight: bold;
     }
 
     nav a:hover {
-      color: var(--red);
+      color: #d01818;
     }
 
-    /* HEADER IMAGE
-       Upload the banner into the same GitHub folder as index.html
-       and name it exactly: header.png
-    */
+
+    /* =========================================
+       HEADER / CONFERENCE BANNER
+    ========================================= */
+
     .hero {
-      background: #fbe2e2;
-      border-bottom: 1px solid #efcaca;
+      background: #fff7f7;
+      padding: 25px 20px 10px;
     }
 
-    .hero img {
+    .hero-banner {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      background: white;
+
+      border-radius: 18px;
+      overflow: hidden;
+
+      border: 1px solid #f0dede;
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-banner img {
       display: block;
       width: 100%;
       height: auto;
     }
 
-    /* GENERAL LAYOUT */
+
+    /* =========================================
+       MAIN PAGE
+    ========================================= */
+
     main {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 54px 0 70px;
+
+      padding: 35px 0 70px;
     }
 
     section {
-      scroll-margin-top: 90px;
       margin-bottom: 80px;
+      scroll-margin-top: 100px;
     }
 
     .section-kicker {
       margin: 0 0 4px;
+
       text-align: center;
-      color: var(--red);
-      font-size: 0.82rem;
+
+      color: #d01818;
+
+      font-size: 0.8rem;
       font-weight: 800;
+
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
 
     .section-title {
       margin: 0;
+
       text-align: center;
-      color: var(--navy);
-      font-size: clamp(2rem, 4vw, 2.75rem);
+
+      color: #0b2f63;
+
+      font-size: clamp(2rem, 4vw, 2.7rem);
       line-height: 1.15;
     }
 
     .section-intro {
       max-width: 760px;
-      margin: 15px auto 36px;
+
+      margin: 14px auto 36px;
+
       text-align: center;
-      color: var(--muted);
+
+      color: #667085;
+
       font-size: 1.03rem;
     }
 
-    /* PROFESSIONAL EVENT SUMMARY */
+
+    /* =========================================
+       CONFERENCE INFORMATION
+    ========================================= */
+
     .event-summary {
-      margin-top: -8px;
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: white;
+
+      border: 1px solid #eadede;
       border-radius: 18px;
-      box-shadow: var(--shadow);
+
       overflow: hidden;
+
+      box-shadow:
+        0 10px 30px rgba(25, 38, 61, 0.08);
     }
 
     .event-summary-top {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr 1.4fr;
+
+      grid-template-columns:
+        1.3fr
+        0.8fr
+        1.3fr;
     }
 
     .event-detail {
-      min-height: 128px;
-      padding: 26px 28px;
+      padding: 28px 30px;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-right: 1px solid var(--border);
+
+      border-right: 1px solid #eadede;
     }
 
     .event-detail:last-child {
-      border-right: 0;
+      border-right: none;
     }
 
     .event-label {
-      margin-bottom: 6px;
-      color: var(--red);
-      font-size: 0.76rem;
+      margin-bottom: 5px;
+
+      color: #d01818;
+
+      font-size: 0.75rem;
       font-weight: 800;
+
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
 
     .event-value {
-      color: var(--navy);
-      font-size: 1.22rem;
+      color: #0b2f63;
+
+      font-size: 1.2rem;
       font-weight: 800;
+
       line-height: 1.35;
     }
 
     .event-subvalue {
       margin-top: 3px;
-      color: var(--muted);
-      font-size: 0.95rem;
+
+      color: #667085;
+
+      font-size: 0.93rem;
     }
 
     .event-deadline {
-      padding: 14px 28px;
+      padding: 14px 25px;
+
       background: #fff0f0;
+
       border-top: 1px solid #f1d1d1;
+
       text-align: center;
+
       color: #6d2525;
-      font-size: 0.96rem;
     }
 
     .event-deadline strong {
-      color: var(--red-dark);
+      color: #b31313;
     }
 
-    /* ABOUT */
+
+    /* =========================================
+       ABOUT
+    ========================================= */
+
     .about-card {
       max-width: 900px;
+
       margin: 0 auto;
-      padding: 38px 42px;
-      background: var(--white);
-      border: 1px solid var(--border);
+
+      padding: 40px;
+
+      background: white;
+
+      border: 1px solid #eadede;
       border-radius: 18px;
-      box-shadow: var(--shadow);
-      font-size: 1.07rem;
+
+      box-shadow:
+        0 10px 30px rgba(25, 38, 61, 0.07);
+
+      font-size: 1.05rem;
     }
 
     .about-card p:first-child {
@@ -229,7 +290,11 @@ html = r'''<!DOCTYPE html>
       margin-bottom: 0;
     }
 
-    /* SPEAKERS */
+
+    /* =========================================
+       SPEAKERS
+    ========================================= */
+
     .speaker-list {
       display: grid;
       gap: 30px;
@@ -237,111 +302,182 @@ html = r'''<!DOCTYPE html>
 
     .speaker-card {
       display: grid;
-      grid-template-columns: 280px minmax(0, 1fr);
-      background: var(--white);
-      border: 1px solid var(--border);
+
+      grid-template-columns:
+        280px
+        minmax(0, 1fr);
+
+      background: white;
+
+      border: 1px solid #eadede;
       border-radius: 20px;
+
       overflow: hidden;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        0 12px 32px rgba(25, 38, 61, 0.08);
     }
 
     .speaker-photo-wrap {
       min-height: 100%;
-      background:
-        linear-gradient(145deg, #f9dada, #fff5f5);
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8dada,
+          #fff5f5
+        );
     }
 
     .speaker-photo {
+      display: block;
+
       width: 100%;
       height: 100%;
-      min-height: 360px;
+
+      min-height: 390px;
+
       object-fit: cover;
-      display: block;
+      object-position: center top;
     }
+
+
+    /* Placeholder for Julie because no photo yet */
 
     .speaker-no-photo {
       width: 150px;
       height: 150px;
+
       border-radius: 50%;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--white);
-      border: 4px solid rgba(208, 24, 24, 0.14);
-      color: var(--navy);
+
+      background: white;
+
+      border:
+        4px solid
+        rgba(208, 24, 24, 0.14);
+
+      color: #0b2f63;
+
       font-size: 2.6rem;
       font-weight: 800;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 8px 26px
+        rgba(0, 0, 0, 0.06);
     }
 
+
     .speaker-body {
-      padding: 32px 36px 34px;
+      padding: 34px 38px;
     }
 
     .panel-label {
       display: inline-block;
+
       margin-bottom: 12px;
-      padding: 6px 10px;
+
+      padding: 6px 11px;
+
       border-radius: 999px;
+
       background: #fff0f0;
-      color: var(--red-dark);
-      font-size: 0.78rem;
+
+      color: #b31313;
+
+      font-size: 0.76rem;
       font-weight: 800;
+
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
 
     .speaker-body h3 {
-      margin: 0 0 4px;
-      color: var(--navy);
-      font-size: clamp(1.55rem, 3vw, 2rem);
+      margin: 0 0 5px;
+
+      color: #0b2f63;
+
+      font-size: clamp(
+        1.5rem,
+        3vw,
+        2rem
+      );
+
       line-height: 1.2;
     }
 
     .speaker-role {
       margin: 0 0 16px;
-      color: var(--red);
+
+      color: #d01818;
+
       font-weight: 700;
     }
 
     .affiliations {
       display: grid;
-      gap: 4px;
+      gap: 3px;
+
       margin: 0 0 20px;
       padding: 0;
+
       list-style: none;
+
       color: #46546a;
-      font-size: 0.96rem;
+
+      font-size: 0.95rem;
     }
 
     .affiliations li::before {
       content: "—";
+
       margin-right: 8px;
-      color: var(--red);
-      font-weight: 700;
+
+      color: #d01818;
+      font-weight: bold;
     }
 
     .speaker-bio {
       margin: 0;
+
       color: #4a5668;
     }
 
-    /* REGISTRATION */
+
+    /* =========================================
+       REGISTRATION
+    ========================================= */
+
     .registration-box {
       display: grid;
-      grid-template-columns: 1fr 300px;
+
+      grid-template-columns:
+        1fr
+        310px;
+
       overflow: hidden;
-      background: var(--navy);
-      color: var(--white);
+
+      background: #0b2f63;
+
+      color: white;
+
       border-radius: 22px;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        0 12px 35px
+        rgba(25, 38, 61, 0.12);
     }
 
     .registration-copy {
-      padding: 48px 46px;
+      padding: 50px 48px;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -349,248 +485,367 @@ html = r'''<!DOCTYPE html>
 
     .registration-copy .eyebrow {
       color: #ffb6b6;
-      font-size: 0.8rem;
+
+      font-size: 0.78rem;
       font-weight: 800;
+
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
 
     .registration-copy h2 {
-      margin: 7px 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.08;
+      margin: 8px 0 15px;
+
+      font-size: clamp(
+        2rem,
+        4vw,
+        3rem
+      );
+
+      line-height: 1.1;
     }
 
     .registration-copy p {
       max-width: 580px;
+
       margin: 0 0 12px;
-      color: #e8edf5;
+
+      color: #e5ebf3;
     }
 
     .registration-deadline {
       margin-top: 12px !important;
-      color: #fff !important;
+
+      color: white !important;
+
       font-weight: 700;
     }
 
+
+    /* QR */
+
     .qr-panel {
       padding: 28px;
-      background: #fff3f3;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       text-align: center;
-      color: var(--navy);
+
+      background: #fff3f3;
+
+      color: #0b2f63;
     }
 
     .qr-panel img {
       width: 210px;
-      max-width: 100%;
-      background: white;
+
       padding: 10px;
-      border-radius: 12px;
+
+      background: white;
+
       border: 1px solid #eccaca;
+      border-radius: 12px;
     }
 
     .qr-panel strong {
-      margin-top: 13px;
       display: block;
-      color: var(--red-dark);
+
+      margin-top: 13px;
+
+      color: #b31313;
+
+      font-size: 1.1rem;
     }
 
     .qr-panel span {
       display: block;
+
       margin-top: 3px;
-      font-size: 0.92rem;
+
       color: #58657a;
+
+      font-size: 0.9rem;
     }
 
-    /* ORGANISERS */
+
+    /* =========================================
+       ORGANISERS
+    ========================================= */
+
     .organiser-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 26px;
     }
 
     .organiser-group {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 30px;
-      box-shadow: var(--shadow);
+
+      background: white;
+
+      border: 1px solid #eadede;
+      border-radius: 18px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(25, 38, 61, 0.07);
     }
 
     .organiser-group h3 {
-      margin: 0 0 18px;
+      margin: 0 0 20px;
+
       padding-bottom: 12px;
-      color: var(--navy);
+
+      color: #0b2f63;
+
       font-size: 1.35rem;
-      border-bottom: 2px solid #f1d2d2;
+
+      border-bottom:
+        2px solid #f1d2d2;
     }
 
     .organiser-list {
       list-style: none;
+
       margin: 0;
       padding: 0;
+
       display: grid;
       gap: 11px;
     }
 
     .organiser-list li {
-      padding: 11px 13px;
+      padding: 11px 14px;
+
       background: #fff8f8;
+
       border-radius: 10px;
+
       color: #475467;
     }
 
-    /* SPONSORS */
+
+    /* =========================================
+       FUNDING AND SPONSORS
+    ========================================= */
+
     .funding {
-      padding: 38px;
+      padding: 40px;
+
       text-align: center;
-      background: var(--white);
-      border: 1px solid var(--border);
+
+      background: white;
+
+      border: 1px solid #eadede;
       border-radius: 18px;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        0 10px 30px
+        rgba(25, 38, 61, 0.07);
     }
 
     .funding h3 {
-      margin: 0 0 7px;
-      color: var(--navy);
+      margin: 0 0 8px;
+
+      color: #0b2f63;
+
       font-size: 1.45rem;
     }
 
     .funding p {
-      max-width: 720px;
+      max-width: 700px;
+
       margin: 0 auto 28px;
-      color: var(--muted);
+
+      color: #667085;
     }
 
     .sponsor-grid {
       display: flex;
       flex-wrap: wrap;
+
       justify-content: center;
+
       gap: 18px;
     }
 
     .sponsor-placeholder {
       min-width: 190px;
       min-height: 90px;
+
       padding: 18px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: #fafafa;
+
       border: 1px dashed #c8c8c8;
       border-radius: 12px;
+
       color: #8a8f98;
-      background: #fafafa;
-      font-weight: 700;
+
+      font-weight: bold;
     }
 
     .sponsor-logo {
       width: 190px;
       height: 90px;
+
       padding: 12px;
+
       object-fit: contain;
+
       background: white;
-      border: 1px solid var(--border);
+
+      border: 1px solid #eadede;
       border-radius: 12px;
     }
 
-    /* CONTACT */
+
+    /* =========================================
+       CONTACT
+    ========================================= */
+
     .contact-card {
       max-width: 800px;
+
       margin: 0 auto;
-      padding: 34px;
+
+      padding: 36px;
+
       text-align: center;
-      background: var(--white);
-      border: 1px solid var(--border);
+
+      background: white;
+
+      border: 1px solid #eadede;
       border-radius: 18px;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        0 10px 30px
+        rgba(25, 38, 61, 0.07);
     }
 
     .contact-card strong {
-      color: var(--navy);
+      color: #0b2f63;
     }
 
-    /* FOOTER */
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
     footer {
       padding: 30px 20px;
-      text-align: center;
-      background: #061e43;
-      color: #dce5f2;
-    }
 
-    footer strong {
-      color: white;
+      text-align: center;
+
+      background: #061e43;
+
+      color: #dce5f2;
     }
 
     footer p {
       margin: 4px 0;
     }
 
-    /* MOBILE */
+    footer strong {
+      color: white;
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
     @media (max-width: 900px) {
+
       nav {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
       }
 
       nav ul {
-        justify-content: flex-start;
         gap: 12px 18px;
       }
+
 
       .event-summary-top {
         grid-template-columns: 1fr;
       }
 
       .event-detail {
-        min-height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
+        border-right: none;
+
+        border-bottom:
+          1px solid #eadede;
       }
 
       .event-detail:last-child {
-        border-bottom: 0;
+        border-bottom: none;
       }
+
 
       .speaker-card {
         grid-template-columns: 1fr;
       }
 
       .speaker-photo {
-        height: 380px;
+        height: 420px;
         min-height: 0;
-        object-position: center top;
       }
 
       .speaker-photo-wrap {
         min-height: 300px;
       }
 
+
       .registration-box {
         grid-template-columns: 1fr;
       }
 
+
       .organiser-grid {
         grid-template-columns: 1fr;
       }
+
     }
 
+
     @media (max-width: 600px) {
+
+      .hero {
+        padding: 12px 10px 5px;
+      }
+
+      .hero-banner {
+        border-radius: 10px;
+      }
+
       main {
-        width: min(100% - 26px, 1120px);
-        padding-top: 34px;
+        width: calc(100% - 26px);
+
+        padding-top: 28px;
       }
 
       section {
         margin-bottom: 58px;
       }
 
-      .speaker-body,
+      .speaker-body {
+        padding: 27px 23px;
+      }
+
       .registration-copy {
-        padding: 27px 24px;
+        padding: 35px 24px;
       }
 
       .about-card,
@@ -599,15 +854,25 @@ html = r'''<!DOCTYPE html>
       .contact-card {
         padding: 26px 22px;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- NAVIGATION -->
+
+  <!-- =====================================
+       NAVIGATION
+  ====================================== -->
+
   <nav>
-    <div class="logo"><span>CARDIO GENETICS</span> 2026</div>
+
+    <div class="logo">
+      <span>CARDIO GENETICS</span> 2026
+    </div>
 
     <ul>
       <li><a href="#about">About</a></li>
@@ -617,353 +882,884 @@ html = r'''<!DOCTYPE html>
       <li><a href="#funding">Funding</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
   </nav>
 
-  <!-- FULL-WIDTH HEADER IMAGE -->
+
+
+  <!-- =====================================
+       HEADER IMAGE
+  ====================================== -->
+
   <header class="hero">
-    <img
-      src="header.png"
-      alt="Interuniversity Cardio Genetics Conference — 23 October 2026, O&N5 Gasthuisberg Leuven"
-    >
+
+    <div class="hero-banner">
+
+      <img
+        src="header.png"
+        alt="Interuniversity Cardio Genetics Conference 2026"
+      >
+
+    </div>
+
   </header>
+
+
 
   <main>
 
-    <!-- PROFESSIONAL CONFERENCE DETAILS -->
-    <section aria-label="Conference details">
+
+    <!-- =====================================
+         CONFERENCE INFORMATION
+    ====================================== -->
+
+    <section>
+
       <div class="event-summary">
+
         <div class="event-summary-top">
 
-          <div class="event-detail">
-            <div class="event-label">Conference date</div>
-            <div class="event-value">Friday, 23 October 2026</div>
-            <div class="event-subvalue">One-day interuniversity conference</div>
-          </div>
 
           <div class="event-detail">
-            <div class="event-label">Programme starts</div>
-            <div class="event-value">09:00</div>
-            <div class="event-subvalue">Leuven, Belgium</div>
+
+            <div class="event-label">
+              Conference date
+            </div>
+
+            <div class="event-value">
+              Friday, 23 October 2026
+            </div>
+
+            <div class="event-subvalue">
+              One-day interuniversity conference
+            </div>
+
           </div>
 
+
+
           <div class="event-detail">
-            <div class="event-label">Venue</div>
-            <div class="event-value">O&amp;N5 Gasthuisberg</div>
-            <div class="event-subvalue">Leuven</div>
+
+            <div class="event-label">
+              Programme starts
+            </div>
+
+            <div class="event-value">
+              09:00
+            </div>
+
+            <div class="event-subvalue">
+              Leuven, Belgium
+            </div>
+
           </div>
+
+
+
+          <div class="event-detail">
+
+            <div class="event-label">
+              Venue
+            </div>
+
+            <div class="event-value">
+              O&amp;N5 Gasthuisberg
+            </div>
+
+            <div class="event-subvalue">
+              Leuven
+            </div>
+
+          </div>
+
 
         </div>
+
 
         <div class="event-deadline">
-          Registration closes on <strong>12 October 2026</strong>.
+
+          Registration closes on
+
+          <strong>
+            12 October 2026
+          </strong>
+
         </div>
+
+
       </div>
+
     </section>
 
-    <!-- ABOUT -->
+
+
+    <!-- =====================================
+         ABOUT
+    ====================================== -->
+
     <section id="about">
-      <p class="section-kicker">Interuniversity meeting</p>
-      <h2 class="section-title">About the Conference</h2>
-      <p class="section-intro">
-        A one-day scientific meeting bringing together clinical, genetic and
-        experimental perspectives in cardiovascular genetics.
+
+      <p class="section-kicker">
+        Interuniversity meeting
       </p>
+
+      <h2 class="section-title">
+        About the Conference
+      </h2>
+
+      <p class="section-intro">
+
+        A one-day scientific meeting bringing together
+        clinical, genetic and experimental perspectives
+        in cardiovascular genetics.
+
+      </p>
+
 
       <div class="about-card">
-        <p>
-          The <strong>Interuniversity Cardio Genetics Conference</strong>
-          brings together researchers, clinicians and experts working in
-          cardiovascular genetics.
-        </p>
 
         <p>
-          The conference is organised around three complementary perspectives:
-          clinical genetics and cardiology, genetic research, and model systems
-          and development. The meeting provides an opportunity to exchange
-          knowledge, discuss current developments in cardiogenetics and connect
-          researchers and clinicians from different universities and institutions.
+
+          The
+          <strong>
+            Interuniversity Cardio Genetics Conference
+          </strong>
+
+          brings together researchers, clinicians and
+          experts working in cardiovascular genetics.
+
         </p>
+
+
+        <p>
+
+          The conference is organised around three
+          complementary perspectives:
+
+          clinical genetics and cardiology,
+          genetic research,
+          and model systems and development.
+
+          The meeting provides an opportunity to exchange
+          knowledge, discuss current developments in
+          cardiogenetics and connect researchers and
+          clinicians from different universities and
+          institutions.
+
+        </p>
+
       </div>
+
     </section>
 
-    <!-- SPEAKERS -->
+
+
+    <!-- =====================================
+         SPEAKERS
+    ====================================== -->
+
     <section id="speakers">
-      <p class="section-kicker">Scientific programme</p>
-      <h2 class="section-title">Confirmed Speakers</h2>
-      <p class="section-intro">
-        Three panels spanning clinical cardiogenetics, genetic research and
-        experimental model systems.
+
+      <p class="section-kicker">
+        Scientific programme
       </p>
+
+      <h2 class="section-title">
+        Confirmed Speakers
+      </h2>
+
+      <p class="section-intro">
+
+        Three panels spanning clinical cardiogenetics,
+        genetic research and experimental model systems.
+
+      </p>
+
 
       <div class="speaker-list">
 
-        <!-- PANEL 1 — no photo yet -->
+
+        <!-- =================================
+             PANEL 1
+        ================================== -->
+
         <article class="speaker-card">
+
+
           <div class="speaker-photo-wrap">
-            <div class="speaker-no-photo" aria-label="No speaker photo available yet">
+
+            <!--
+              No picture yet for Julie.
+              This displays JD instead.
+            -->
+
+            <div class="speaker-no-photo">
               JD
             </div>
+
           </div>
+
 
           <div class="speaker-body">
-            <div class="panel-label">Panel 1 · Clinical genetics and cardiology</div>
 
-            <h3>Prof. Dr. Julie De Backer</h3>
-            <p class="speaker-role">Ghent University &amp; UZ Gent</p>
+
+            <div class="panel-label">
+
+              Panel 1 · Clinical genetics and cardiology
+
+            </div>
+
+
+            <h3>
+              Prof. Dr. Julie De Backer
+            </h3>
+
+
+            <p class="speaker-role">
+
+              Ghent University &amp; UZ Gent
+
+            </p>
+
 
             <ul class="affiliations">
-              <li>Centre for Medical Genetics</li>
+
+              <li>
+                Centre for Medical Genetics
+              </li>
+
             </ul>
 
+
             <p class="speaker-bio">
-              Prof. Dr. Julie De Backer is a cardiologist and clinical geneticist
-              at Ghent University Hospital and professor at Ghent University.
-              Her clinical and research interests focus on Heritable Thoracic
-              Aortic Diseases (HTAD), including Marfan syndrome and related
-              disorders, as well as Adult Congenital Heart Disease (ACHD).
-              Her translational research combines clinical studies with
-              genetically engineered animal models to identify novel therapeutic
-              targets and improve the diagnosis, treatment, and long-term
-              management of patients with inherited cardiovascular diseases.
-              She leads and participates in several international multicentre
-              studies on topics such as pregnancy and ageing in congenital heart
-              disease and plays an active role in European guideline development,
-              having co-chaired the 2020 ESC Guidelines on Adult Congenital Heart
-              Disease and the 2025 ESC Guidelines on Cardiovascular Disease
-              during Pregnancy.
+
+              Prof. Dr. Julie De Backer is a cardiologist
+              and clinical geneticist at Ghent University
+              Hospital and professor at Ghent University.
+
+              Her clinical and research interests focus
+              on Heritable Thoracic Aortic Diseases (HTAD),
+              including Marfan syndrome and related
+              disorders, as well as Adult Congenital
+              Heart Disease (ACHD).
+
+              Her translational research combines clinical
+              studies with genetically engineered animal
+              models to identify novel therapeutic targets
+              and improve the diagnosis, treatment, and
+              long-term management of patients with
+              inherited cardiovascular diseases.
+
+              She leads and participates in several
+              international multicentre studies on topics
+              such as pregnancy and ageing in congenital
+              heart disease and plays an active role in
+              European guideline development, having
+              co-chaired the 2020 ESC Guidelines on Adult
+              Congenital Heart Disease and the 2025 ESC
+              Guidelines on Cardiovascular Disease during
+              Pregnancy.
+
             </p>
+
+
           </div>
+
+
         </article>
 
-        <!-- PANEL 2
-             Upload the photo in the same folder as index.html
-             and name it exactly: larsen.jpg
-        -->
+
+
+        <!-- =================================
+             PANEL 2
+        ================================== -->
+
         <article class="speaker-card">
+
+
           <div class="speaker-photo-wrap">
+
+            <!--
+              Upload Lars's photo and name it:
+
+              larsen.jpg
+            -->
+
             <img
               class="speaker-photo"
               src="larsen.jpg"
               alt="Prof. Dr. Lars Allan Larsen"
             >
+
           </div>
+
 
           <div class="speaker-body">
-            <div class="panel-label">Panel 2 · Genetic research</div>
 
-            <h3>Prof. Dr. Lars Allan Larsen</h3>
-            <p class="speaker-role">University of Copenhagen</p>
+
+            <div class="panel-label">
+
+              Panel 2 · Genetic research
+
+            </div>
+
+
+            <h3>
+
+              Prof. Dr. Lars Allan Larsen
+
+            </h3>
+
+
+            <p class="speaker-role">
+
+              University of Copenhagen
+
+            </p>
+
 
             <ul class="affiliations">
-              <li>Faculty of Health and Medical Sciences</li>
-              <li>Department of Cellular and Molecular Medicine</li>
+
+              <li>
+                Faculty of Health and Medical Sciences
+              </li>
+
+              <li>
+                Department of Cellular and Molecular Medicine
+              </li>
+
             </ul>
 
+
             <p class="speaker-bio">
-              Prof. Dr. Lars Allan Larsen is professor of Developmental Genetics
-              at the University of Copenhagen. His research focuses on the
-              fundamental genetic and molecular mechanisms underlying human
-              embryonic development and congenital disorders, with a particular
-              interest in cardiac development and congenital heart disease (CHD).
-              His group combines human genetic studies with functional approaches
-              in cellular models, tissues, and zebrafish to uncover novel disease
-              genes and regulatory mechanisms involved in embryonic development.
-              By integrating genetic discovery with functional validation, his
-              research aims to contribute to a better understanding of the
-              molecular basis of congenital heart defects and other developmental
-              disorders.
+
+              Prof. Dr. Lars Allan Larsen is professor
+              of Developmental Genetics at the University
+              of Copenhagen.
+
+              His research focuses on the fundamental
+              genetic and molecular mechanisms underlying
+              human embryonic development and congenital
+              disorders, with a particular interest in
+              cardiac development and congenital heart
+              disease (CHD).
+
+              His group combines human genetic studies
+              with functional approaches in cellular
+              models, tissues, and zebrafish to uncover
+              novel disease genes and regulatory mechanisms
+              involved in embryonic development.
+
+              By integrating genetic discovery with
+              functional validation, his research aims
+              to contribute to a better understanding
+              of the molecular basis of congenital heart
+              defects and other developmental disorders.
+
             </p>
+
+
           </div>
+
+
         </article>
 
-        <!-- PANEL 3
-             Upload the photo in the same folder as index.html
-             and name it exactly: stefanovic.jpg
-        -->
+
+
+        <!-- =================================
+             PANEL 3
+        ================================== -->
+
         <article class="speaker-card">
+
+
           <div class="speaker-photo-wrap">
+
+            <!--
+              Upload Sonia's photo and name it:
+
+              stefanovic.jpg
+            -->
+
             <img
               class="speaker-photo"
               src="stefanovic.jpg"
               alt="Dr. Sonia Stefanovic"
             >
+
           </div>
+
 
           <div class="speaker-body">
-            <div class="panel-label">Panel 3 · Model systems and development</div>
 
-            <h3>Dr. Sonia Stefanovic</h3>
-            <p class="speaker-role">Aix-Marseille University</p>
+
+            <div class="panel-label">
+
+              Panel 3 · Model systems and development
+
+            </div>
+
+
+            <h3>
+
+              Dr. Sonia Stefanovic
+
+            </h3>
+
+
+            <p class="speaker-role">
+
+              Aix-Marseille University
+
+            </p>
+
 
             <ul class="affiliations">
-              <li>French Institute of Health and Medical Research</li>
-              <li>Centre for CardioVascular and Nutrition Research (C2VN, Marseille)</li>
+
+              <li>
+                French Institute of Health and Medical Research
+              </li>
+
+              <li>
+                Centre for CardioVascular and Nutrition Research
+                (C2VN, Marseille)
+              </li>
+
             </ul>
 
+
             <p class="speaker-bio">
-              Dr. Sonia Stefanovic is a group leader at the Centre for
-              CardioVascular and Nutrition Research at Aix-Marseille University.
-              Her research focuses on the molecular mechanisms underlying cardiac
-              development and congenital heart disease, with a particular interest
-              in how genetic, metabolic and environmental factors interact during
-              embryonic heart formation. Her group combines mouse models,
-              pluripotent stem cell-derived cardiac organoids, and state-of-the-art
-              transcriptomic, epigenomic and single-cell multi-omics approaches to
-              investigate gene regulatory networks and epigenetic mechanisms.
-              Current research focuses on the impact of maternal pregestational
-              diabetes on fetal heart development and the role of gene–environment
-              interactions in congenital heart defects.
+
+              Dr. Sonia Stefanovic is a group leader at
+              the Centre for CardioVascular and Nutrition
+              Research at Aix-Marseille University.
+
+              Her research focuses on the molecular
+              mechanisms underlying cardiac development
+              and congenital heart disease, with a
+              particular interest in how genetic,
+              metabolic and environmental factors
+              interact during embryonic heart formation.
+
+              Her group combines mouse models, pluripotent
+              stem cell-derived cardiac organoids, and
+              state-of-the-art transcriptomic, epigenomic
+              and single-cell multi-omics approaches to
+              investigate gene regulatory networks and
+              epigenetic mechanisms.
+
+              Current research focuses on the impact of
+              maternal pregestational diabetes on fetal
+              heart development and the role of
+              gene–environment interactions in congenital
+              heart defects.
+
             </p>
+
+
           </div>
+
+
         </article>
 
+
       </div>
+
     </section>
 
-    <!-- REGISTRATION -->
+
+
+    <!-- =====================================
+         REGISTRATION
+    ====================================== -->
+
     <section id="registration">
+
+
       <div class="registration-box">
 
+
         <div class="registration-copy">
-          <div class="eyebrow">Registration</div>
 
-          <h2>Join us in Leuven</h2>
+
+          <div class="eyebrow">
+            Registration
+          </div>
+
+
+          <h2>
+            Join us in Leuven
+          </h2>
+
 
           <p>
-            Registration for the Interuniversity Cardio Genetics Conference
-            is available through the QR code.
+
+            Registration for the Interuniversity
+            Cardio Genetics Conference is available
+            through the QR code.
+
           </p>
 
+
           <p>
-            Scan the code with your phone to open the registration form.
+
+            Scan the QR code with your phone to open
+            the registration form.
+
           </p>
+
 
           <p class="registration-deadline">
-            Registration deadline: 12 October 2026
+
+            Registration deadline:
+            12 October 2026
+
           </p>
+
+
         </div>
+
+
 
         <div class="qr-panel">
-          <!-- Upload this image as QR.png -->
-          <img src="QR.png" alt="QR code for conference registration">
 
-          <strong>Scan to register</strong>
-          <span>Registration closes 12 October 2026</span>
+
+          <!--
+            Upload your registration QR image
+            and name it exactly:
+
+            QR.png
+          -->
+
+          <img
+            src="QR.png"
+            alt="Conference registration QR code"
+          >
+
+
+          <strong>
+            Scan to register
+          </strong>
+
+
+          <span>
+            Registration closes 12 October 2026
+          </span>
+
+
         </div>
 
+
       </div>
+
     </section>
 
-    <!-- ORGANISERS -->
+
+
+    <!-- =====================================
+         ORGANISERS
+    ====================================== -->
+
     <section id="organisers">
-      <p class="section-kicker">Conference team</p>
-      <h2 class="section-title">Organisers</h2>
-      <p class="section-intro">
-        Replace the placeholder text below with the names of the organising
-        professors and PhD students.
+
+
+      <p class="section-kicker">
+        Conference team
       </p>
+
+
+      <h2 class="section-title">
+        Organisers
+      </h2>
+
+
+      <p class="section-intro">
+
+        Organised by researchers and clinicians
+        working in cardiovascular genetics.
+
+      </p>
+
+
 
       <div class="organiser-grid">
 
-        <div class="organiser-group">
-          <h3>Professors</h3>
 
-          <ul class="organiser-list">
-            <!-- REPLACE THESE WITH THE REAL NAMES -->
-            <li>Prof. Dr. [Professor name]</li>
-            <li>Prof. Dr. [Professor name]</li>
-            <li>Prof. Dr. [Professor name]</li>
-          </ul>
-        </div>
+        <!-- PROFESSORS -->
 
         <div class="organiser-group">
-          <h3>PhD Students</h3>
+
+
+          <h3>
+            Professors
+          </h3>
+
 
           <ul class="organiser-list">
-            <!-- REPLACE THESE WITH THE REAL NAMES -->
-            <li>[PhD student name]</li>
-            <li>[PhD student name]</li>
-            <li>[PhD student name]</li>
+
+            <!--
+              REPLACE THESE NAMES
+            -->
+
+            <li>
+              Prof. Dr. [Professor name]
+            </li>
+
+            <li>
+              Prof. Dr. [Professor name]
+            </li>
+
+            <li>
+              Prof. Dr. [Professor name]
+            </li>
+
           </ul>
+
+
         </div>
+
+
+
+        <!-- PhD STUDENTS -->
+
+        <div class="organiser-group">
+
+
+          <h3>
+            PhD Students
+          </h3>
+
+
+          <ul class="organiser-list">
+
+            <!--
+              REPLACE THESE NAMES
+            -->
+
+            <li>
+              [PhD student name]
+            </li>
+
+            <li>
+              [PhD student name]
+            </li>
+
+            <li>
+              [PhD student name]
+            </li>
+
+          </ul>
+
+
+        </div>
+
 
       </div>
+
+
     </section>
 
-    <!-- FUNDING / SPONSORS -->
+
+
+    <!-- =====================================
+         FUNDING / SPONSORS
+    ====================================== -->
+
     <section id="funding">
-      <p class="section-kicker">Acknowledgements</p>
-      <h2 class="section-title">Funding &amp; Sponsors</h2>
-      <p class="section-intro">
-        Add the names and logos of the organisations supporting the conference.
+
+
+      <p class="section-kicker">
+        Acknowledgements
       </p>
 
+
+      <h2 class="section-title">
+        Funding &amp; Sponsors
+      </h2>
+
+
+      <p class="section-intro">
+
+        We gratefully acknowledge the organisations
+        supporting the conference.
+
+      </p>
+
+
+
       <div class="funding">
-        <h3>Funded by</h3>
+
+
+        <h3>
+          Funded by
+        </h3>
+
 
         <p>
-          This conference is made possible with the support of our funding
-          partners and sponsors.
+
+          This conference is made possible with the
+          support of our funding partners and sponsors.
+
         </p>
+
+
 
         <div class="sponsor-grid">
 
-          <!-- OPTION 1: leave these placeholders until you have the logos -->
-          <div class="sponsor-placeholder">Sponsor / funder</div>
-          <div class="sponsor-placeholder">Sponsor / funder</div>
-          <div class="sponsor-placeholder">Sponsor / funder</div>
 
           <!--
-          OPTION 2: when you have logo images, delete the placeholders above
-          and use this instead:
+            FOR NOW THESE ARE PLACEHOLDERS.
 
-          <img class="sponsor-logo" src="sponsor1.png" alt="Sponsor 1">
-          <img class="sponsor-logo" src="sponsor2.png" alt="Sponsor 2">
-          <img class="sponsor-logo" src="sponsor3.png" alt="Sponsor 3">
+            When you give me the sponsor names/logos
+            I can replace these.
           -->
 
+
+          <div class="sponsor-placeholder">
+            Sponsor / Funder
+          </div>
+
+
+          <div class="sponsor-placeholder">
+            Sponsor / Funder
+          </div>
+
+
+          <div class="sponsor-placeholder">
+            Sponsor / Funder
+          </div>
+
+
+          <!--
+
+          EXAMPLE FOR REAL LOGOS:
+
+          <img
+            class="sponsor-logo"
+            src="sponsor1.png"
+            alt="Sponsor name"
+          >
+
+          <img
+            class="sponsor-logo"
+            src="sponsor2.png"
+            alt="Sponsor name"
+          >
+
+          -->
+
+
         </div>
+
+
       </div>
+
+
     </section>
 
-    <!-- CONTACT -->
+
+
+    <!-- =====================================
+         CONTACT
+    ====================================== -->
+
     <section id="contact">
-      <p class="section-kicker">Questions</p>
-      <h2 class="section-title">Contact</h2>
-      <p class="section-intro">
-        Contact information for questions regarding the conference.
+
+
+      <p class="section-kicker">
+        Questions
       </p>
 
+
+      <h2 class="section-title">
+        Contact
+      </h2>
+
+
+      <p class="section-intro">
+
+        Contact the organising team for questions
+        regarding the conference.
+
+      </p>
+
+
+
       <div class="contact-card">
-        <p>
-          For questions regarding the conference, please contact the
-          organising team through KU Leuven.
-        </p>
+
 
         <p>
-          <strong>Venue</strong><br>
-          O&amp;N5 Gasthuisberg<br>
-          Leuven, Belgium
+
+          For questions regarding the conference,
+          please contact the organising team
+          through KU Leuven.
+
         </p>
+
+
+        <p>
+
+          <strong>
+            Conference venue
+          </strong>
+
+          <br>
+
+          O&amp;N5 Gasthuisberg
+
+          <br>
+
+          Leuven, Belgium
+
+        </p>
+
 
         <!--
-        If you have an email address, add it here, for example:
-        <p><a href="mailto:your.email@kuleuven.be">your.email@kuleuven.be</a></p>
+          When you have an email,
+          add it like this:
+
+          <p>
+            <a href="mailto:email@kuleuven.be">
+              email@kuleuven.be
+            </a>
+          </p>
         -->
+
+
       </div>
+
+
     </section>
+
 
   </main>
 
+
+
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
   <footer>
-    <p><strong>Interuniversity Cardio Genetics Conference</strong></p>
-    <p>23 October 2026 · Leuven</p>
+
+
+    <p>
+
+      <strong>
+        Interuniversity Cardio Genetics Conference
+      </strong>
+
+    </p>
+
+
+    <p>
+      23 October 2026 · Leuven
+    </p>
+
+
   </footer>
 
-</body>
-</html>
-'''
 
-path = Path("/mnt/data/index.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created {path}")
+</body>
+
+</html>
