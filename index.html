@@ -450,6 +450,72 @@
 
 
     /* =========================================
+       AGENDA
+    ========================================= */
+
+    .agenda-card {
+      overflow: hidden;
+
+      max-width: 940px;
+      margin: 0 auto;
+
+      background: white;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .agenda-row {
+      display: grid;
+
+      grid-template-columns: 150px 1fr;
+
+      gap: 24px;
+
+      align-items: start;
+
+      padding: 18px 26px;
+
+      border-bottom: 1px solid #f0e6e6;
+    }
+
+    .agenda-row:last-child {
+      border-bottom: 0;
+    }
+
+    .agenda-time {
+      color: var(--red);
+
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .agenda-item {
+      color: var(--text);
+
+      font-weight: 700;
+    }
+
+    .agenda-row.break {
+      background: #fff7f7;
+    }
+
+    .agenda-row.break .agenda-item {
+      color: var(--red-dark);
+    }
+
+    .agenda-row.discussion {
+      background: #f7f9fc;
+    }
+
+    .agenda-row.discussion .agenda-item {
+      color: var(--navy);
+    }
+
+
+    /* =========================================
        REGISTRATION
     ========================================= */
 
@@ -828,6 +894,18 @@
         padding: 32px 24px;
       }
 
+      .agenda-row {
+        grid-template-columns: 1fr;
+
+        gap: 4px;
+
+        padding: 16px 20px;
+      }
+
+      .agenda-time {
+        font-size: 0.9rem;
+      }
+
     }
 
   </style>
@@ -864,6 +942,10 @@
 
       <li>
         <a href="#speakers">Speakers</a>
+      </li>
+
+      <li>
+        <a href="#agenda">Agenda</a>
       </li>
 
       <li>
@@ -1387,6 +1469,220 @@
 
 
         </article>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         AGENDA
+    ========================================== -->
+
+    <section id="agenda">
+
+
+      <p class="section-kicker">
+        Scientific programme
+      </p>
+
+
+      <h2 class="section-title">
+        Agenda
+      </h2>
+
+
+      <p class="section-intro">
+        Programme for Friday, 23 October 2026.
+      </p>
+
+
+      <div class="agenda-card">
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            9u00 – 9u15
+          </div>
+
+          <div class="agenda-item">
+            Introduction
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            9u15 - 9u55
+          </div>
+
+          <div class="agenda-item">
+            Expert talk panel 1: Prof. Dr. Julie De Backer
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            9u55 - 10u15
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 1 panel 1
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            10u15 - 10u35
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 2 panel 1
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row break">
+
+          <div class="agenda-time">
+            10u35 - 11u00
+          </div>
+
+          <div class="agenda-item">
+            Coffee
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            11u00 - 11u40
+          </div>
+
+          <div class="agenda-item">
+            Expert talk panel 2: Prof. Dr. Lars Allen Larsen
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            11u40 - 12u00
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 1 panel 2
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            12u00 - 12u20
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 2 panel 2
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row break">
+
+          <div class="agenda-time">
+            12u20 – 14u00
+          </div>
+
+          <div class="agenda-item">
+            Lunch + Poster session
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            14u00 – 14u40
+          </div>
+
+          <div class="agenda-item">
+            Expert panel 3: Dr. Sonia Stefanovic
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            14u40 – 15u00
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 1 panel 3
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row">
+
+          <div class="agenda-time">
+            15u00 – 15u20
+          </div>
+
+          <div class="agenda-item">
+            15 min talk 2 panel 3
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row break">
+
+          <div class="agenda-time">
+            15u20 – 15u45
+          </div>
+
+          <div class="agenda-item">
+            Coffee
+          </div>
+
+        </div>
+
+
+        <div class="agenda-row discussion">
+
+          <div class="agenda-time">
+            15u45 – 16u45
+          </div>
+
+          <div class="agenda-item">
+            Ronde tafel/Panel gesprek
+          </div>
+
+        </div>
 
 
       </div>
